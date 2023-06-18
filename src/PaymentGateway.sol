@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
 error NotOwner();
@@ -27,12 +27,8 @@ contract PaymentGateway {
 
     function withdraw(uint amount) external onlyOwner {
         require(amount <= address(this).balance, "Insufficient contract balance");
-
         (bool success, ) = msg.sender.call{ value: amount } ("");
         require(success, "Transfer failed.");
-        // payable(owner).transfer(amount);
-
-
         emit PaymentWithdrawn(owner, amount);
     }
     

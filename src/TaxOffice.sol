@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.18;
 
 error NotOwner();
 
-contract PaymentGateway {
+contract TaxOffice {
     address public immutable owner;
     
-    event PaymentReceived(string indexed taxIdentifier, uint amount);
-    event PaymentWithdrawn(address indexed receiver, uint amount);
+    event PaymentReceived(string taxIdentifier, uint amount);
+    event PaymentWithdrawn(address receiver, uint amount);
 
     constructor() {
         owner = msg.sender;

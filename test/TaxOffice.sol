@@ -11,7 +11,12 @@ contract taxOfficeTest is Test {
 
     function setUp() public {
         vm.prank(address(1));
-        taxOffice = new TaxOffice();
+        taxOffice = new TaxOffice("Test");
+    }
+
+    function test_name() public {
+            string memory name = taxOffice.name();
+            assertEq(name, "Test");
     }
 
     function test_RevertWhen_CallerIsNotOwner() public {
